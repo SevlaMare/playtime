@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet } from 'react-native';
 
-import {IllustationImg} from '../assets/image';
+import { IllustationImg } from '../assets/image';
 
-function SignIn(){
+function SignIn() {
   const [username, setUsername] = useState('');
 
   return (
     <View style={_styles.container}>
       <Image source={IllustationImg} />
 
-      <Text>Welcome</Text>
-
+      <View>
+        <Text>
+          Organize{`\n`}
+          yours gameplays{`\n`}
+          easily
+        </Text>
+      </View>
+      {/*
       <TextInput
         style={_styles.input}
         onChangeText={value => setUsername(value)}
-      />
+      /> */}
 
-      <Text>Login: {username}</Text>
+      {/* <Text>Login: {username}</Text> */}
     </View>
   );
 }
@@ -33,8 +39,8 @@ const _styles = StyleSheet.create({
     fontSize: 14,
     width: '100%',
     color: '#fff',
-    backgroundColor: '#333'
-  }
+    backgroundColor: '#333',
+  },
 });
 
 export default SignIn;
