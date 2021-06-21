@@ -1,7 +1,4 @@
-import IllustationImg from '../assets/image/illustration.png';
-import splash from '../assets/image/splash.png';
+import IllustationImg from './image/illustration.png';
+import splash from './image/splash.png';
 
-export {
-  splash,
-  IllustationImg
-}
+export { splash, IllustationImg };
