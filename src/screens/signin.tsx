@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet } from 'react-native';
 
-import IllustationImg from '../../assets/illustration.png';
+import {IllustationImg} from '../assets/image';
 
 function SignIn(){
   const [username, setUsername] = useState('');
 
   return (
     <View style={_styles.container}>
+      <Image source={IllustationImg} />
+
       <Text>Welcome</Text>
 
       <TextInput
