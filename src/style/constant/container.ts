@@ -3,8 +3,9 @@ import theme from '../theme';
 
 const container = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: theme.color.background,
+    flexGrow: 1,
+    paddingTop: 40,
+    backgroundColor: theme.background,
   },
   containerFluid: { width: '100%' },
 

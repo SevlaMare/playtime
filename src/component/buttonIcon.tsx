@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-import styles from '../styles';
-import theme from '../styles/theme';
+import styles from '../style';
+import theme from '../style/theme';
 
 type Props = {
   label: string;
@@ -15,9 +15,7 @@ const ButtonIcon = ({ label, icon }: Props) => {
       style={[style.container, styles.rounded1]}
       activeOpacity={0.85}
     >
-      <View
-        style={[styles.flexRow, styles.alignItemsCenter, style.iconWrapper]}
-      >
+      <View style={[styles.flexRow, styles.alignItemsCenter]}>
         <Image style={[styles.mx2, { width: 24, height: 18 }]} source={icon} />
 
         <Text
@@ -41,10 +39,9 @@ const ButtonIcon = ({ label, icon }: Props) => {
 };
 
 const style = StyleSheet.create({
-  container: { backgroundColor: theme.color.primary },
-  label: { color: '#fff' },
-  separator: { borderColor: '#991F36' },
-  iconWrapper: { borderColor: theme.color.line },
+  container: { backgroundColor: theme.button.primary.background },
+  separator: { borderColor: theme.separator.color },
+  label: { color: theme.color },
 });
 
 export default ButtonIcon;

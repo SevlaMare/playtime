@@ -16,12 +16,16 @@ import ButtonIcon from '../component/buttonIcon';
 import { IllustationImg } from '../assets/image';
 import { discord } from '../assets/icon';
 
-import styles from '../styles';
-import theme from '../styles/theme';
+// styles
+import styles from '../style';
+import theme from '../style/theme';
 
 const SignIn = () => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       <View
         style={[
           styles.container,
@@ -32,17 +36,25 @@ const SignIn = () => {
         <StatusBar
           barStyle='light-content'
           backgroundColor='transparent'
-          translucent // stick to top
+          translucent
         />
 
         <Image
-          style={[styles.imgContain]}
+          style={[styles.imgStretch]}
           source={IllustationImg}
-          height={360}
+          height={300}
         />
 
-        <View>
-          <Text style={[style.title, styles.textCenter, styles.h1, styles.mb2]}>
+        <View style={[styles.mx4, styles.mb2]}>
+          <Text
+            style={[
+              style.title,
+              styles.textCenter,
+              styles.h1,
+              styles.mb2,
+              { marginTop: -50 },
+            ]}
+          >
             Connect{`\n`}
             and organize{`\n`}
             yours gameplays
@@ -62,8 +74,8 @@ const SignIn = () => {
 };
 
 const style = StyleSheet.create({
-  title: { color: theme.color.heading },
-  subtitle: { color: theme.color.heading },
+  title: { color: theme.text.primary.color },
+  subtitle: { color: theme.text.primary.color },
 });
 
 export default SignIn;
