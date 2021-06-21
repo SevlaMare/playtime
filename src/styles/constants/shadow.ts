@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native"
-import color from "./color"
+import { StyleSheet } from 'react-native';
+import color from './color';
 // TODO match styles ios x android with elevation
 
 const shadow = StyleSheet.create({
@@ -43,18 +43,11 @@ const shadow = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
   },
   shadowBottom: {
-    shadowColor: "#333",
+    shadowColor: '#333',
     shadowRadius: 1,
     shadowOpacity: 1,
-    shadowOffset: { height: 3 },
+    // shadowOffset: { height: 3 },
   },
+});
 
-  cardPicture: {
-    shadowColor: "#BBB",
-    shadowOpacity: 0.8,
-    shadowRadius: 6,
-    shadowOffset: { width: 1, height: 10 },
-  },
-})
-
-export default shadow
+export default shadow;

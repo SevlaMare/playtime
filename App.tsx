@@ -1,10 +1,8 @@
 import React from 'react';
-import SignIn from './src/screens/signin'
+import SignIn from './src/screen/signin';
 
-function App(){
-  return (
-    <SignIn />
-  );
-}
+const App = () => {
+  return <SignIn />;
+};
 
 export default App;
