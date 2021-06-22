@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 import styles from '../style';
@@ -9,6 +9,12 @@ import ButtonChar from '../component/buttonChar';
 import CategorySelect from '../component/categorySelect';
 
 const Home = () => {
+  const [category, setCategory] = useState('');
+
+  const handleToggleCategory = (categoryId: string) => {
+    categoryId === category ? setCategory('') : setCategory(categoryId);
+  };
+
   return (
     <ScrollView style={[style.header, { width: '100%' }]}>
       <View
@@ -35,7 +41,10 @@ const Home = () => {
         <ButtonChar />
       </View>
 
-      <CategorySelect />
+      <CategorySelect
+        categorySelected={category}
+        setCategory={handleToggleCategory}
+      />
     </ScrollView>
   );
 };

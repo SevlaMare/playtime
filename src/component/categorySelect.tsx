@@ -5,16 +5,17 @@ import { CATEGORIES } from '../helpers/categories';
 import Category from './category';
 
 type Props = {
-  categorySelected: number;
+  categorySelected: string;
+  setCategory: (categoryId: string) => void;
 };
 
-const CategorySelect = ({ categorySelected }: Props) => {
+const CategorySelect = ({ categorySelected, setCategory }: Props) => {
   return (
     <ScrollView
       style={[styles.container, styles.ml2]}
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{ paddingRight: 40 }}
+      contentContainerStyle={{ paddingRight: 20 }}
     >
       {CATEGORIES.map(category => (
         <Category
@@ -22,6 +23,7 @@ const CategorySelect = ({ categorySelected }: Props) => {
           title={category.title}
           icon={category.icon}
           checked={category.id === categorySelected}
+          onPress={() => setCategory(category.id)}
         />
       ))}
     </ScrollView>
