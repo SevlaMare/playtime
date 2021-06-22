@@ -1,17 +1,15 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 
-import SignIn from './src/screen/signin';
-import Home from './src/screen/home';
+import Router from './src/Router';
 import Container from './src/component/container';
 
-import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import {
   Rajdhani_500Medium,
   Rajdhani_700Bold,
 } from '@expo-google-fonts/rajdhani';
-
+import { useFonts } from 'expo-font';
 import AppLoadling from 'expo-app-loading';
 
 const App = () => {
@@ -33,8 +31,7 @@ const App = () => {
         backgroundColor='transparent'
         translucent
       />
-      {/* <SignIn /> */}
-      <Home />
+      <Router />
     </Container>
   );
 };

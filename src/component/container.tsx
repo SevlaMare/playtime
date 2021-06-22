@@ -11,11 +11,7 @@ type Props = {
 const Container = ({ children }: Props) => {
   return (
     <LinearGradient
-      style={[
-        styles.container,
-        styles.justifyContentCenter,
-        styles.alignItemsCenter,
-      ]}
+      style={[styles.container, styles.justifyContentCenter]}
       colors={[theme.container.gradient.start, theme.container.gradient.end]}
     >
       {children}
