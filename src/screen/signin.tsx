@@ -1,19 +1,21 @@
-// core
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-// components
-import ButtonIcon from '../component/buttonIcon';
-
-// assets
+import styles from '../style';
+import theme from '../style/theme';
 import { IllustationImg } from '../assets/image';
 import { discord } from '../assets/icon';
 
-// styles
-import styles from '../style';
-import theme from '../style/theme';
+import ButtonIcon from '../component/buttonIcon';
 
 const SignIn = () => {
+  const navigation = useNavigation();
+
+  const handleSignIn = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -53,7 +55,11 @@ const SignIn = () => {
             Create groups to play your favorites games with your friends
           </Text>
 
-          <ButtonIcon icon={discord} label={'Login with Discord'} />
+          <ButtonIcon
+            icon={discord}
+            label={'Login with Discord'}
+            onPress={handleSignIn}
+          />
         </View>
       </View>
     </ScrollView>

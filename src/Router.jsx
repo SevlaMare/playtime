@@ -15,8 +15,8 @@ const Router = () => {
         headerMode='none'
         screenOptions={{ cardStyle: { backgroundColor: 'transparent' } }}
       >
-        <Screen name='Home' component={Home} />
         <Screen name='SignIn' component={SignIn} />
+        <Screen name='Home' component={Home} />
       </Navigator>
     </NavigationContainer>
   );

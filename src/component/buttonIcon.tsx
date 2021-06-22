@@ -1,19 +1,21 @@
 import React from 'react';
 import { Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 
 import styles from '../style';
 import theme from '../style/theme';
 
-type Props = {
+type Props = RectButtonProps & {
   label: string;
-  icon?: any; // optional
+  icon?: any;
 };
 
-const ButtonIcon = ({ label, icon }: Props) => {
+const ButtonIcon = ({ label, icon, ...props }: Props) => {
   return (
-    <TouchableOpacity
+    <RectButton
       style={[style.container, styles.rounded1]}
       activeOpacity={0.85}
+      {...props}
     >
       <View style={[styles.flexRow, styles.alignItemsCenter]}>
         <Image style={[styles.mx2, { width: 24, height: 18 }]} source={icon} />
@@ -34,7 +36,7 @@ const ButtonIcon = ({ label, icon }: Props) => {
           {label}
         </Text>
       </View>
-    </TouchableOpacity>
+    </RectButton>
   );
 };
 

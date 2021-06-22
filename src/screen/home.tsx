@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
-// import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -46,7 +45,6 @@ const Home = () => {
   );
 };
 
-// getStatusBarHeight()
 const style = StyleSheet.create({
   header: { marginTop: 26 },
 });
