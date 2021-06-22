@@ -1,13 +1,6 @@
 // core
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  StatusBar,
-  ScrollView,
-} from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 // components
 import ButtonIcon from '../component/buttonIcon';
@@ -19,7 +12,6 @@ import { discord } from '../assets/icon';
 // styles
 import styles from '../style';
 import theme from '../style/theme';
-import { LinearGradient } from 'expo-linear-gradient';
 
 const SignIn = () => {
   return (
@@ -56,7 +48,7 @@ const SignIn = () => {
           </Text>
 
           <Text
-            style={[style.subtitle, styles.textCenter, styles.h3, styles.mb4]}
+            style={[style.subtitle, styles.textCenter, styles.h4, styles.mb4]}
           >
             Create groups to play your favorites games with your friends
           </Text>
