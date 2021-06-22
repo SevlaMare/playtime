@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, Image, View, StyleSheet } from 'react-native';
+
+// instead of touchable opacity, better user experience
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 
 import styles from '../style';

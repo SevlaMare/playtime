@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 import styles from '../style';
 import theme from '../style/theme';
 
-import { discord } from '../assets/icon';
-
 import Avatar from '../component/avatar';
+import ButtonChar from '../component/buttonChar';
+import CategorySelect from '../component/categorySelect';
 
 const Home = () => {
   return (
@@ -24,7 +24,7 @@ const Home = () => {
         <View style={styles.flexGrow}>
           <View style={styles.flexRow}>
             <Text style={[styles.h2, { color: theme.color }]}>Hi, </Text>
-            <Text style={[styles.h3, { color: theme.color }]}>user</Text>
+            <Text style={[styles.h3, { color: theme.color }]}>Thiago</Text>
           </View>
 
           <Text style={[styles.h4, { color: theme.color }]}>
@@ -32,15 +32,10 @@ const Home = () => {
           </Text>
         </View>
 
-        <Image
-          style={[styles.ml2, { width: 24, height: 18 }]}
-          source={discord}
-        />
+        <ButtonChar />
       </View>
 
-      <View>
-        <Text>asiojd</Text>
-      </View>
+      <CategorySelect />
     </ScrollView>
   );
 };

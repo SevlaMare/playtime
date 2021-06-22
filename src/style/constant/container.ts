@@ -24,6 +24,10 @@ const container = StyleSheet.create({
     width: 35,
     height: 35,
   },
+  box4: {
+    width: 50,
+    height: 50,
+  },
   box5: {
     width: 56,
     height: 56,

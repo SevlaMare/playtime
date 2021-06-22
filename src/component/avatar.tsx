@@ -18,7 +18,8 @@ const Avatar = ({ urlImage }: Props) => {
         styles.alignItemsCenter,
         styles.justifyContentCenter,
         styles.rounded1,
-        styles.border,
+        styles.border1,
+        styles.box4,
         styles.mr2,
       ]}
       colors={[theme.container.gradient.start, theme.container.gradient.end]}
@@ -32,7 +33,7 @@ const Avatar = ({ urlImage }: Props) => {
 };
 
 const style = StyleSheet.create({
-  container: { width: 49, height: 49, borderColor: theme.container.border },
+  container: { borderColor: theme.container.border },
   avatar: { width: 46, height: 46 },
 });
 

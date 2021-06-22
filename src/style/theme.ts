@@ -18,6 +18,15 @@ const theme = {
     },
   },
 
+  card: {
+    borderColor: color.blue300,
+    background: color.blue600,
+    gradient: {
+      start: color.blue500,
+      end: color.blue600,
+    },
+  },
+
   separator: { color: color.red700 },
 
   button: {
