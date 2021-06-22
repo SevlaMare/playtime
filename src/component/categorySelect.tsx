@@ -1,9 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-
+import { ScrollView } from 'react-native';
 import styles from '../style';
-import theme from '../style/theme';
-
 import { CATEGORIES } from '../helpers/categories';
 import Category from './category';
 
@@ -30,9 +27,5 @@ const CategorySelect = ({ categorySelected }: Props) => {
     </ScrollView>
   );
 };
-
-// const style = StyleSheet.create({
-//   container: { backgroundColor: theme.button.primary.background },
-// });
 
 export default CategorySelect;

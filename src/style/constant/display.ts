@@ -6,6 +6,8 @@ const display = StyleSheet.create({
   flexGrow: { flexGrow: 1 },
   flexShrink: { flexShrink: 1 },
 
+  alignSelfEnd: { alignSelf: 'flex-end' },
+
   justifyContentBetween: { justifyContent: 'space-between' },
   justifyContentCenter: { justifyContent: 'center' },
   justifyContentStart: { justifyContent: 'flex-start' },

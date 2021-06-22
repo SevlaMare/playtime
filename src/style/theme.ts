@@ -20,11 +20,12 @@ const theme = {
 
   card: {
     borderColor: color.blue300,
-    background: color.blue600,
+    background: color.blue700,
     gradient: {
       start: color.blue500,
       end: color.blue600,
     },
+    checked: color.whiteice,
   },
 
   separator: { color: color.red700 },

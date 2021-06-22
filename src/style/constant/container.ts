@@ -9,8 +9,8 @@ const container = StyleSheet.create({
   containerFluid: { width: '100%' },
 
   box0: {
-    width: 20,
-    height: 20,
+    width: 10,
+    height: 10,
   },
   box1: {
     width: 25,

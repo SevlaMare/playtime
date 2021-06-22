@@ -19,7 +19,6 @@ const Category = ({ title, icon: Icon, checked = false, ...props }: Props) => {
         style={[
           style.container,
           styles.alignItemsCenter,
-          styles.justifyContentCenter,
           styles.mr1,
           styles.rounded1,
           styles.border2,
@@ -27,12 +26,21 @@ const Category = ({ title, icon: Icon, checked = false, ...props }: Props) => {
         ]}
         colors={[theme.card.gradient.start, theme.card.gradient.end]}
       >
-        {/* <View style={ checked ? styles.checked : styles.check }/> */}
-        <View style={[styles.justifyContentCenter, styles.alignItemsCenter]}>
-          <Icon width={50} height={50} />
-        </View>
+        <View
+          style={[
+            style.checkbox,
+            styles.alignSelfEnd,
+            styles.border1,
+            styles.mr1,
+            styles.mt05,
+            styles.mb1,
+            checked ? style.checked : null,
+          ]}
+        />
 
-        <Text style={[style.label, styles.h5, styles.mt2]}>{title}</Text>
+        <Icon width={50} height={50} />
+
+        <Text style={[style.label, styles.h5, styles.mt08]}>{title}</Text>
       </LinearGradient>
     </RectButton>
   );
@@ -46,8 +54,14 @@ const style = StyleSheet.create({
     borderColor: theme.card.borderColor,
     backgroundColor: theme.card.background,
   },
-  check: { color: 'red' },
-  checked: { color: 'green' },
+  checkbox: {
+    width: 8,
+    height: 8,
+    borderRadius: 2,
+    borderColor: theme.card.borderColor,
+    backgroundColor: theme.card.background,
+  },
+  checked: { borderRadius: 0, backgroundColor: theme.card.checked },
 });
 
 export default Category;
