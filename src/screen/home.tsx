@@ -2,10 +2,12 @@ import React, { ReactNode } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
 // import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
-import { discord } from '../assets/icon';
-
 import styles from '../style';
 import theme from '../style/theme';
+
+import { discord } from '../assets/icon';
+
+import Avatar from '../component/avatar';
 
 const Home = () => {
   return (
@@ -18,10 +20,7 @@ const Home = () => {
           styles.mb2,
         ]}
       >
-        <Image
-          style={[styles.mr2, { width: 24, height: 18 }]}
-          source={discord}
-        />
+        <Avatar urlImage={'http://github.com/SevlaMare.png'} />
 
         <View style={styles.flexGrow}>
           <View style={styles.flexRow}>

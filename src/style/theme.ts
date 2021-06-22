@@ -33,6 +33,7 @@ const theme = {
       start: color.blue700,
       end: color.blue900,
     },
+    border: color.green500,
   },
 };
 

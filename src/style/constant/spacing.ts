@@ -72,6 +72,7 @@ const spacing = StyleSheet.create({
   px4: { paddingHorizontal: space['4x'] },
 
   // BORDER RADIUS
+  border: { borderWidth: 1 },
   rounded1: { borderRadius: 8 },
   rounded2: { borderRadius: 15 },
   rounded3: { borderRadius: 35 },
