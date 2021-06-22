@@ -5,7 +5,6 @@ const container = StyleSheet.create({
   container: {
     flexGrow: 1,
     paddingTop: 40,
-    backgroundColor: theme.background,
   },
   containerFluid: { width: '100%' },
 

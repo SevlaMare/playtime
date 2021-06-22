@@ -6,7 +6,7 @@ import color from './constant/color';
 
 const base = {
   color: color.whiteice,
-  background: color.blue900,
+  background: color.blue800,
 };
 
 const theme = {
@@ -25,6 +25,13 @@ const theme = {
       color: color.whiteice,
       borderColor: color.red700,
       background: color.red200,
+    },
+  },
+
+  container: {
+    gradient: {
+      start: color.blue700,
+      end: color.blue900,
     },
   },
 };

@@ -19,6 +19,7 @@ import { discord } from '../assets/icon';
 // styles
 import styles from '../style';
 import theme from '../style/theme';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const SignIn = () => {
   return (
@@ -33,12 +34,6 @@ const SignIn = () => {
           styles.alignItemsCenter,
         ]}
       >
-        <StatusBar
-          barStyle='light-content'
-          backgroundColor='transparent'
-          translucent
-        />
-
         <Image
           style={[styles.imgStretch]}
           source={IllustationImg}

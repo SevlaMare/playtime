@@ -1,5 +1,8 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
+
 import SignIn from './src/screen/signin';
+import Container from './src/component/container';
 
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
@@ -7,6 +10,7 @@ import {
   Rajdhani_500Medium,
   Rajdhani_700Bold,
 } from '@expo-google-fonts/rajdhani';
+
 import AppLoadling from 'expo-app-loading';
 
 const App = () => {
@@ -21,7 +25,16 @@ const App = () => {
     return <AppLoadling />;
   }
 
-  return <SignIn />;
+  return (
+    <Container>
+      <StatusBar
+        barStyle='light-content'
+        backgroundColor='transparent'
+        translucent
+      />
+      <SignIn />
+    </Container>
+  );
 };
 
 export default App;

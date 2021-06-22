@@ -1,10 +1,18 @@
 import { StyleSheet } from 'react-native';
 
+// load fonts on entry point, src/app.tsx
+const fonts = {
+  inter400: 'Inter_400Regular',
+  inter500: 'Inter_500Medium',
+  rajdhani500: 'Rajdhani_500Medium',
+  rajdhani700: 'Rajdhani_700Bold',
+};
+
 const typography = StyleSheet.create({
   // TITLE
   h1: {
     fontSize: 40,
-    fontWeight: '700',
+    fontFamily: fonts.rajdhani700,
   },
 
   h2: {
@@ -14,7 +22,7 @@ const typography = StyleSheet.create({
   h3: {
     fontSize: 15,
     lineHeight: 25,
-    fontWeight: '400',
+    fontFamily: fonts.inter400,
   },
 
   // PARAGRAPH
@@ -26,7 +34,7 @@ const typography = StyleSheet.create({
   },
   t3: {
     fontSize: 15,
-    fontWeight: '500',
+    fontFamily: fonts.inter500,
   },
 
   // FOOTER
