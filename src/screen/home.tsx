@@ -20,7 +20,7 @@ const Home = () => {
   };
 
   return (
-    <ScrollView style={[style.header, { width: '100%' }]}>
+    <View style={[style.header, { width: '100%' }]}>
       <View style={[styles.flexRow, styles.alignItemsCenter, styles.mx2]}>
         <Avatar urlImage={'http://github.com/SevlaMare.png'} />
 
@@ -55,8 +55,9 @@ const Home = () => {
         renderItem={({ item }) => (
           <AppointmentList data={item} style={styles.mx2} />
         )}
+        showsVerticalScrollIndicator={false}
       />
-    </ScrollView>
+    </View>
   );
 };
 
