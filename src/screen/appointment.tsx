@@ -7,21 +7,24 @@ import {
   ImageBackground,
 } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 import styles from '../style';
 import theme from '../style/theme';
 import { Fontisto } from '@expo/vector-icons';
 import { banner } from '../assets/image';
+import { discord } from '../assets/icon';
 
 import TitleBar from '../component/titleBar';
 import Nav from '../component/nav';
 import Player from '../component/player';
+import ButtonIcon from '../component/buttonIcon';
 
 import { PLAYERS } from '../helpers/mock_data';
 
 const Appointment = () => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Nav
         title={'Appointment'}
         action={
@@ -55,8 +58,20 @@ const Appointment = () => {
         renderItem={({ item }) => <Player data={item} />}
         style={styles.mx2}
       />
+
+      <View style={[style.buttom, styles.mx2, styles.pb2]}>
+        <ButtonIcon
+          icon={discord}
+          label={'Login with Discord'}
+          // onPress={null}
+        />
+      </View>
     </View>
   );
 };
+
+const style = StyleSheet.create({
+  buttom: { marginBottom: getBottomSpace() },
+});
 
 export default Appointment;
