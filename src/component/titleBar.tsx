@@ -17,9 +17,7 @@ const TitleBar = ({ title, subtitle = null, ...props }: Props) => {
         styles.flexRow,
         styles.justifyContentBetween,
         styles.alignItemsCenter,
-        styles.mx2,
-        styles.mt4,
-        styles.mb2,
+        styles.m2,
       ]}
     >
       <Text style={[styles.h6, style.text]}>{title}</Text>

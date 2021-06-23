@@ -9,6 +9,7 @@ const base = {
   background: color.blue800,
 };
 
+// TODO expose gerenic colors names to global
 const theme = {
   ...base,
 

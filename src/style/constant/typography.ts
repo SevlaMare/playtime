@@ -55,6 +55,10 @@ const typography = StyleSheet.create({
     fontSize: 15,
     fontFamily: fonts.inter500,
   },
+  t4: {
+    fontSize: 22,
+    fontFamily: fonts.inter500,
+  },
 
   // FOOTER
   f1: {

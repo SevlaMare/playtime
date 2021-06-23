@@ -33,3 +33,18 @@ export const APPOINTMENTS = [
     description: 'Today we reach top10 without lost any match!',
   },
 ];
+
+export const PLAYERS = [
+  {
+    id: '1',
+    username: 'Sevla',
+    avatar_url: 'https://github.com/sevlamare.png',
+    status: 'online',
+  },
+  {
+    id: '2',
+    username: 'Mare',
+    avatar_url: 'https://github.com/sevlamare.png',
+    status: 'offline',
+  },
+];

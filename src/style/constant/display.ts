@@ -20,6 +20,8 @@ const display = StyleSheet.create({
   alignItemsEnd: { alignItems: 'flex-end' },
 
   textCenter: { textAlign: 'center' },
+  textLeft: { textAlign: 'left' },
+  textRight: { textAlign: 'right' },
 });
 
 export default display;

@@ -3,10 +3,11 @@ import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+// import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import styles from '../style';
 import theme from '../style/theme';
+import { useNavigation } from '@react-navigation/core';
 
 type Props = {
   title: string;
@@ -14,21 +15,27 @@ type Props = {
 };
 
 const Nav = ({ title, action }: Props) => {
+  const navigation = useNavigation();
+
   return (
     <LinearGradient
       style={[
+        styles.flexRow,
+        styles.alignItemsCenter,
         styles.justifyContentBetween,
-        { paddingTop: getStatusBarHeight() },
+        styles.px2,
+        { height: 100 },
+        // { paddingTop: getStatusBarHeight() },
       ]}
       colors={[theme.header.start, theme.header.end]}
     >
-      <BorderlessButton>
+      <BorderlessButton onPress={() => navigation.goBack()}>
         <Feather name='arrow-left' size={24} color={theme.icon.std} />
       </BorderlessButton>
 
-      <Text>{title}</Text>
+      <Text style={[styles.h3, { color: theme.color }]}>{title}</Text>
 
-      {/* { action && } */}
+      <View>{action}</View>
     </LinearGradient>
   );
 };

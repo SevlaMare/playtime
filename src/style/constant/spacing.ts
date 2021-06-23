@@ -11,6 +11,10 @@ const space = {
 };
 
 const spacing = StyleSheet.create({
+  // MARGIN
+  m1: { margin: space['1x'] },
+  m2: { margin: space['2x'] },
+
   // MARGIN TOP
   mt05: { marginTop: space['0.5x'] },
   mt08: { marginTop: space['0.8x'] },
@@ -52,6 +56,8 @@ const spacing = StyleSheet.create({
   mx3: { marginHorizontal: space['3x'] },
   mx4: { marginHorizontal: space['4x'] },
 
+  // -------------------------------------
+
   // PADDING TOP
   pt05: { paddingTop: space['0.5x'] },
   pt1: { paddingTop: space['1x'] },
@@ -70,6 +76,18 @@ const spacing = StyleSheet.create({
   px2: { paddingHorizontal: space['2x'] },
   px3: { paddingHorizontal: space['3x'] },
   px4: { paddingHorizontal: space['4x'] },
+
+  // PADDING RIGHT
+  pr1: { paddingRight: space['1x'] },
+  pr2: { paddingRight: space['2x'] },
+  pr4: { paddingRight: space['4x'] },
+
+  // PADDING LEFT
+  pl1: { paddingLeft: space['1x'] },
+  pl2: { paddingLeft: space['2x'] },
+  pl3: { paddingLeft: space['4x'] },
+
+  // -------------------------------------
 
   // BORDER
   border1: { borderWidth: 1 },
