@@ -18,6 +18,11 @@ const theme = {
     alert: { color: color.red700 },
   },
 
+  icon: {
+    allow: color.green500,
+    disallow: color.red200,
+  },
+
   card: {
     borderColor: color.blue300,
     background: color.blue700,
@@ -28,7 +33,10 @@ const theme = {
     checked: color.whiteice,
   },
 
-  separator: { color: color.red700 },
+  separator: {
+    alert: color.red700,
+    fade: color.blue500,
+  },
 
   button: {
     primary: {

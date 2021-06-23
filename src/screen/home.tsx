@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -8,6 +8,9 @@ import Avatar from '../component/avatar';
 import ButtonChar from '../component/buttonChar';
 import CategorySelect from '../component/categorySelect';
 import TitleBar from '../component/titleBar';
+import AppointmentList from '../component/appointmentList';
+
+import { APPOINTMENTS } from '../helpers/mock_data';
 
 const Home = () => {
   const [category, setCategory] = useState('');
@@ -44,6 +47,14 @@ const Home = () => {
         title={'Scheduled matches'}
         subtitle={'Total 6'}
         style={styles.mx2}
+      />
+
+      <FlatList
+        data={APPOINTMENTS}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <AppointmentList data={item} style={styles.mx2} />
+        )}
       />
     </ScrollView>
   );

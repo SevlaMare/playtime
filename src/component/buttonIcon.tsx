@@ -44,7 +44,7 @@ const ButtonIcon = ({ label, icon, ...props }: Props) => {
 
 const style = StyleSheet.create({
   container: { backgroundColor: theme.button.primary.background },
-  separator: { borderColor: theme.separator.color },
+  separator: { borderColor: theme.separator.alert },
   label: { color: theme.color },
 });
 

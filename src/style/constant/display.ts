@@ -3,10 +3,12 @@ import { StyleSheet } from 'react-native';
 const display = StyleSheet.create({
   flex: { flex: 1 },
   flexRow: { flexDirection: 'row' },
+
   flexGrow: { flexGrow: 1 },
   flexShrink: { flexShrink: 1 },
 
   alignSelfEnd: { alignSelf: 'flex-end' },
+  alignSelfStart: { alignSelf: 'flex-start' },
 
   justifyContentBetween: { justifyContent: 'space-between' },
   justifyContentCenter: { justifyContent: 'center' },
@@ -14,6 +16,8 @@ const display = StyleSheet.create({
   justifyContentEnd: { justifyContent: 'flex-end' },
 
   alignItemsCenter: { alignItems: 'center' },
+  alignItemsStart: { alignItems: 'flex-start' },
+  alignItemsEnd: { alignItems: 'flex-end' },
 
   textCenter: { textAlign: 'center' },
 });

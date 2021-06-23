@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
-import { SvgProps } from 'react-native-svg';
+
 import styles from '../style';
 import theme from '../style/theme';
+
+import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
+import { SvgProps } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 
 type Props = RectButtonProps & {

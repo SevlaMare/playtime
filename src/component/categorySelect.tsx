@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import styles from '../style';
-import { CATEGORIES } from '../helpers/categories';
+import { CATEGORIES } from '../helpers/mock_data';
 import Category from './category';
 
 type Props = {
@@ -13,7 +13,7 @@ const CategorySelect = ({ categorySelected, setCategory }: Props) => {
   return (
     <ScrollView
       style={[styles.container, styles.ml2]}
-      horizontal
+      horizontal={true}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingRight: 20 }}
     >

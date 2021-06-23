@@ -4,4 +4,7 @@ import duel from './icon/duel.svg';
 import fun from './icon/fun.svg';
 import training from './icon/training.svg';
 
-export { discord, ranked, duel, fun, training };
+import Player from './icon/player.svg';
+import Calendar from './icon/calendar.svg';
+
+export { discord, ranked, duel, fun, training, Player, Calendar };
