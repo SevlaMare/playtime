@@ -7,7 +7,7 @@ import theme from '../style/theme';
 import Avatar from '../component/avatar';
 import ButtonChar from '../component/buttonChar';
 import CategorySelect from '../component/categorySelect';
-import ListHeader from '../component/listHeader';
+import TitleBar from '../component/titleBar';
 
 const Home = () => {
   const [category, setCategory] = useState('');
@@ -40,20 +40,11 @@ const Home = () => {
         setCategory={handleToggleCategory}
       />
 
-      <View
-        style={[
-          styles.flexRow,
-          styles.justifyContentBetween,
-          styles.mx2,
-          styles.mt4,
-          styles.mb2,
-        ]}
-      >
-        <Text style={[styles.h6, style.text]}>Scheduled matches</Text>
-        <Text style={[styles.t2, style.textFade]}>Total 6</Text>
-      </View>
-
-      <ListHeader style={styles.mx2} />
+      <TitleBar
+        title={'Scheduled matches'}
+        subtitle={'Total 6'}
+        style={styles.mx2}
+      />
     </ScrollView>
   );
 };
