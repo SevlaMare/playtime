@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -13,6 +14,7 @@ import AppointmentList from '../component/appointmentList';
 import { APPOINTMENTS } from '../helpers/mock_data';
 
 const Home = () => {
+  const navigation = useNavigation();
   const [category, setCategory] = useState('');
 
   const handleToggleCategory = (categoryId: string) => {
@@ -53,7 +55,11 @@ const Home = () => {
         data={APPOINTMENTS}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <AppointmentList data={item} style={styles.mx2} />
+          <AppointmentList
+            data={item}
+            style={styles.mx2}
+            onPress={() => navigation.navigate('Appointment')}
+          />
         )}
         showsVerticalScrollIndicator={false}
       />

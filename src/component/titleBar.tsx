@@ -6,10 +6,10 @@ import theme from '../style/theme';
 
 type Props = ViewProps & {
   title: string;
-  subtitle: string;
+  subtitle?: string | null;
 };
 
-const TitleBar = ({ title, subtitle, ...props }: Props) => {
+const TitleBar = ({ title, subtitle = null, ...props }: Props) => {
   return (
     <View
       {...props}

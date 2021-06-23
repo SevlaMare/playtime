@@ -6,17 +6,24 @@ const { Navigator, Screen } = createStackNavigator();
 
 import Home from './screen/home';
 import SignIn from './screen/signin';
+import Appointment from './screen/appointment';
+
+import theme from './style/theme';
 
 // NavigationContainer wrap the navigation stack history
+// cardStyle bg, will be see on transitions in IOs
 const Router = () => {
   return (
     <NavigationContainer>
       <Navigator
         headerMode='none'
-        screenOptions={{ cardStyle: { backgroundColor: 'transparent' } }}
+        screenOptions={{
+          cardStyle: { backgroundColor: theme.background },
+        }}
       >
-        <Screen name='Home' component={Home} />
+        <Screen name='Appointment' component={Appointment} />
         <Screen name='SignIn' component={SignIn} />
+        <Screen name='Home' component={Home} />
       </Navigator>
     </NavigationContainer>
   );

@@ -19,8 +19,14 @@ const theme = {
   },
 
   icon: {
+    std: base.color,
     allow: color.green500,
     disallow: color.red200,
+  },
+
+  header: {
+    start: color.blue300,
+    end: color.blue500,
   },
 
   card: {
@@ -30,7 +36,7 @@ const theme = {
       start: color.blue500,
       end: color.blue600,
     },
-    checked: color.whiteice,
+    checked: base.color,
   },
 
   separator: {
@@ -40,7 +46,7 @@ const theme = {
 
   button: {
     primary: {
-      color: color.whiteice,
+      color: base.color,
       borderColor: color.red700,
       background: color.red200,
     },
