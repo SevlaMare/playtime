@@ -12,9 +12,16 @@ type Props = RectButtonProps & {
   title: string;
   icon: React.FC<SvgProps>;
   checked?: boolean;
+  checkbox?: boolean;
 };
 
-const Category = ({ title, icon: Icon, checked = false, ...props }: Props) => {
+const Category = ({
+  title,
+  icon: Icon,
+  checked = false,
+  checkbox = false,
+  ...props
+}: Props) => {
   return (
     <RectButton {...props}>
       <LinearGradient
@@ -28,21 +35,21 @@ const Category = ({ title, icon: Icon, checked = false, ...props }: Props) => {
         ]}
         colors={[theme.card.gradient.start, theme.card.gradient.end]}
       >
-        <View
-          style={[
-            style.checkbox,
-            styles.alignSelfEnd,
-            styles.border1,
-            styles.mr1,
-            styles.mt05,
-            styles.mb1,
-            checked ? style.checked : null,
-          ]}
-        />
+        {checkbox && (
+          <View
+            style={[
+              style.checkbox,
+              styles.alignSelfEnd,
+              styles.border1,
+              checked ? style.checked : null,
+              { position: 'absolute', top: 5, right: 6 },
+            ]}
+          />
+        )}
 
-        <Icon width={50} height={50} />
+        <Icon width={50} height={50} style={styles.mt2} />
 
-        <Text style={[style.label, styles.h5, styles.mt08]}>{title}</Text>
+        <Text style={[style.label, styles.h5, styles.mt1]}>{title}</Text>
       </LinearGradient>
     </RectButton>
   );
