@@ -37,13 +37,18 @@ const typography = StyleSheet.create({
     fontFamily: fonts.rajdhani700,
   },
 
+  h6: {
+    fontSize: 18,
+    fontFamily: fonts.rajdhani700,
+  },
+
   // PARAGRAPH
   t1: {
     fontSize: 10,
     fontFamily: fonts.inter500,
   },
   t2: {
-    fontSize: 15,
+    fontSize: 13,
     fontFamily: fonts.inter500,
   },
   t3: {

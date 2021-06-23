@@ -13,9 +13,9 @@ const theme = {
   ...base,
 
   text: {
-    primary: {
-      color: base.color,
-    },
+    primary: { color: base.color },
+    secondary: { color: color.gray700 },
+    alert: { color: color.red700 },
   },
 
   card: {
