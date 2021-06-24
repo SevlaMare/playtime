@@ -15,15 +15,10 @@ type Props = ModalProps & {
 
 const ModalWindow = ({ children, closeModal, ...rest }: Props) => {
   return (
-    <Modal
-      transparent
-      animationType='slide'
-      style={{ marginTop: 200 }}
-      {...rest}
-    >
+    <Modal transparent animationType='slide' {...rest}>
       <TouchableWithoutFeedback onPress={closeModal}>
         <View style={[styles.flexGrow, { backgroundColor: styles.blue800 }]}>
-          <View style={[styles.mx2]}>
+          <View style={[styles.mx2, styles.mt4]}>
             <View
               style={[style.separator, styles.alignSelfCenter, styles.mt1]}
             />

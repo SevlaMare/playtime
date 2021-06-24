@@ -20,10 +20,14 @@ const style = StyleSheet.create({
     marginRight: 4,
     borderRadius: 8,
     fontSize: 13,
-    textAlign: 'center',
     borderWidth: 1,
     borderColor: theme.separator.fade,
     backgroundColor: styles.blue600,
+    color: theme.color,
+    textAlign: 'left',
+    textAlignVertical: 'top',
+    paddingLeft: 15,
+    paddingTop: 15,
   },
 });
 
