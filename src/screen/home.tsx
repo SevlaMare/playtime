@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import styles from '../style';
@@ -22,8 +22,15 @@ const Home = () => {
   };
 
   return (
-    <View style={[style.header, { width: '100%' }]}>
-      <View style={[styles.flexRow, styles.alignItemsCenter, styles.mx2]}>
+    <ScrollView style={[style.header, { width: '100%' }]}>
+      <View
+        style={[
+          styles.flexRow,
+          styles.alignItemsCenter,
+          styles.mx2,
+          styles.mb2,
+        ]}
+      >
         <Avatar urlImage={'http://github.com/SevlaMare.png'} />
 
         <View style={styles.flexGrow}>
@@ -63,7 +70,7 @@ const Home = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
-    </View>
+    </ScrollView>
   );
 };
 

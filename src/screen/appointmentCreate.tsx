@@ -142,7 +142,7 @@ const Appointment = () => {
         </View>
       </ScrollView>
 
-      <ModalWindow visible={showModal}>
+      <ModalWindow visible={showModal} closeModal={() => setShowModal(false)}>
         <ModalGuild handleSelect={handleGuildSelect} />
       </ModalWindow>
     </KeyboardAvoidingView>

@@ -1,20 +1,36 @@
 import React, { ReactNode } from 'react';
-import { View, Modal, ModalProps, StyleSheet } from 'react-native';
+import {
+  View,
+  Modal,
+  ModalProps,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import styles from '../style';
 
 type Props = ModalProps & {
   children: ReactNode;
+  closeModal: () => void;
 };
 
-const ModalWindow = ({ children, ...rest }: Props) => {
+const ModalWindow = ({ children, closeModal, ...rest }: Props) => {
   return (
-    <Modal transparent animationType='slide' {...rest}>
-      <View style={[styles.flexGrow, { backgroundColor: styles.blue800 }]}>
-        <View style={[styles.mx2, { marginTop: 100 }]}>
-          <View style={[style.separator, styles.alignSelfCenter, styles.mt1]} />
-          {children}
+    <Modal
+      transparent
+      animationType='slide'
+      style={{ marginTop: 200 }}
+      {...rest}
+    >
+      <TouchableWithoutFeedback onPress={closeModal}>
+        <View style={[styles.flexGrow, { backgroundColor: styles.blue800 }]}>
+          <View style={[styles.mx2]}>
+            <View
+              style={[style.separator, styles.alignSelfCenter, styles.mt1]}
+            />
+            {children}
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };

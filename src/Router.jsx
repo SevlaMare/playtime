@@ -23,11 +23,11 @@ const Router = () => {
           cardStyle: { backgroundColor: theme.background },
         }}
       >
-        <Screen name='AppointmentCreate' component={AppointmentCreate} />
-        <Screen name='ModalGuild' component={ModalGuild} />
         <Screen name='SignIn' component={SignIn} />
         <Screen name='Home' component={Home} />
+        <Screen name='AppointmentCreate' component={AppointmentCreate} />
         <Screen name='AppointmentDisplay' component={AppointmentDisplay} />
+        <Screen name='ModalGuild' component={ModalGuild} />
       </Navigator>
     </NavigationContainer>
   );
