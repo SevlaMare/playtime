@@ -6,7 +6,8 @@ const { Navigator, Screen } = createStackNavigator();
 
 import Home from './screen/home';
 import SignIn from './screen/signin';
-import Appointment from './screen/appointment';
+import AppointmentCreate from './screen/appointmentCreate';
+import AppointmentDisplay from './screen/appointmentDisplay';
 
 import theme from './style/theme';
 
@@ -21,9 +22,10 @@ const Router = () => {
           cardStyle: { backgroundColor: theme.background },
         }}
       >
-        <Screen name='Appointment' component={Appointment} />
+        <Screen name='AppointmentCreate' component={AppointmentCreate} />
         <Screen name='SignIn' component={SignIn} />
         <Screen name='Home' component={Home} />
+        <Screen name='AppointmentDisplay' component={AppointmentDisplay} />
       </Navigator>
     </NavigationContainer>
   );

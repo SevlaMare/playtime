@@ -71,11 +71,11 @@ const spacing = StyleSheet.create({
   pb3: { paddingBottom: space['3x'] },
   pb4: { paddingBottom: space['4x'] },
 
-  // PADDING HORIZONTAL
-  px0: { paddingHorizontal: 0 },
-  px2: { paddingHorizontal: space['2x'] },
-  px3: { paddingHorizontal: space['3x'] },
-  px4: { paddingHorizontal: space['4x'] },
+  // PADDING VERTICAL
+  py1: { paddingVertical: space['1x'] },
+  py2: { paddingVertical: space['2x'] },
+  py3: { paddingVertical: space['3x'] },
+  py4: { paddingVertical: space['4x'] },
 
   // PADDING RIGHT
   pr1: { paddingRight: space['1x'] },
@@ -86,6 +86,12 @@ const spacing = StyleSheet.create({
   pl1: { paddingLeft: space['1x'] },
   pl2: { paddingLeft: space['2x'] },
   pl3: { paddingLeft: space['4x'] },
+
+  // PADDING HORIZONTAL
+  px0: { paddingHorizontal: 0 },
+  px2: { paddingHorizontal: space['2x'] },
+  px3: { paddingHorizontal: space['3x'] },
+  px4: { paddingHorizontal: space['4x'] },
 
   // -------------------------------------
 

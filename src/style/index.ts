@@ -9,6 +9,7 @@ import typography from './constant/typography';
 import container from './constant/container';
 import effect from './constant/effect';
 import shadow from './constant/shadow';
+import color from './constant/color';
 
 const styles = {
   ...display,
@@ -17,6 +18,7 @@ const styles = {
   ...container,
   ...effect,
   ...shadow,
+  ...color,
 };
 
 export default styles;

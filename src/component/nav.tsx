@@ -12,9 +12,10 @@ import { useNavigation } from '@react-navigation/core';
 type Props = {
   title: string;
   action?: ReactNode;
+  style: object;
 };
 
-const Nav = ({ title, action }: Props) => {
+const Nav = ({ title, action, style }: Props) => {
   const navigation = useNavigation();
 
   return (
@@ -24,7 +25,7 @@ const Nav = ({ title, action }: Props) => {
         styles.alignItemsCenter,
         styles.justifyContentBetween,
         styles.px2,
-        { height: 100 },
+        { height: 100, ...style },
         // { paddingTop: getStatusBarHeight() },
       ]}
       colors={[theme.header.start, theme.header.end]}

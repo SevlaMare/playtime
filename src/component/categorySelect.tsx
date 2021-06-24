@@ -6,13 +6,14 @@ import Category from './category';
 
 type Props = {
   categorySelected: string;
+  checkbox?: boolean;
   setCategory: (categoryId: string) => void;
 };
 
-const CategorySelect = ({ categorySelected, setCategory }: Props) => {
+const CategorySelect = ({ categorySelected, setCategory, checkbox }: Props) => {
   return (
     <ScrollView
-      style={[styles.container, styles.ml2]}
+      style={[styles.ml2]}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ paddingRight: 20 }}
@@ -20,6 +21,7 @@ const CategorySelect = ({ categorySelected, setCategory }: Props) => {
       {CATEGORIES.map(category => (
         <Category
           key={category.id}
+          checkbox={checkbox}
           title={category.title}
           icon={category.icon}
           checked={category.id === categorySelected}

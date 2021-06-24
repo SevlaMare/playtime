@@ -39,7 +39,6 @@ const Category = ({
           <View
             style={[
               style.checkbox,
-              styles.alignSelfEnd,
               styles.border1,
               checked ? style.checked : null,
               { position: 'absolute', top: 5, right: 6 },

@@ -37,7 +37,7 @@ const Home = () => {
           </Text>
         </View>
 
-        <ButtonChar />
+        <ButtonChar onPress={() => navigation.navigate('AppointmentCreate')} />
       </View>
 
       <CategorySelect
