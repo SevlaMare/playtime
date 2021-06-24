@@ -52,13 +52,13 @@ export const PLAYERS = [
 export const GUILDS = [
   {
     id: '1',
-    name: 'Lendários',
+    name: 'Legends',
     icon: 'image.png',
     owner: true,
   },
   {
     id: '2',
-    name: 'Galera do Game',
+    name: 'Gamming team',
     icon: 'image.png',
     owner: false,
   },

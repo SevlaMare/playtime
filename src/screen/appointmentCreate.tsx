@@ -99,9 +99,9 @@ const Appointment = () => {
             </Text>
 
             <View style={[styles.flexRow, styles.alignItemsCenter, styles.mt1]}>
-              <Input />
+              <Input maxLength={2} />
               <Text style={[styles.t3, { color: theme.color }]}>/ </Text>
-              <Input />
+              <Input maxLength={2} />
             </View>
           </View>
 
@@ -111,9 +111,9 @@ const Appointment = () => {
             </Text>
 
             <View style={[styles.flexRow, styles.alignItemsCenter, styles.mt1]}>
-              <Input />
+              <Input maxLength={2} />
               <Text style={[styles.t3, { color: theme.color }]}>/ </Text>
-              <Input />
+              <Input maxLength={2} />
             </View>
           </View>
         </View>

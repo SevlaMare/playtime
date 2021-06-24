@@ -22,6 +22,7 @@ const style = StyleSheet.create({
     fontSize: 13,
     textAlign: 'center',
     borderWidth: 1,
+    color: styles.whiteice,
     borderColor: theme.separator.fade,
     backgroundColor: styles.blue600,
   },
