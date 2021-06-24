@@ -27,7 +27,7 @@ const style = StyleSheet.create({
     textAlign: 'left',
     textAlignVertical: 'top',
     paddingLeft: 15,
-    paddingTop: 15,
+    paddingTop: 10,
   },
 });
 

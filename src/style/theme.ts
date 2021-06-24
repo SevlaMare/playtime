@@ -1,6 +1,6 @@
-// ---------------------
-// Source for all colors
-// ---------------------
+// ------------------------
+// Color source for theming
+// ------------------------
 
 import color from './constant/color';
 

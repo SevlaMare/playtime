@@ -22,7 +22,7 @@ const Home = () => {
   };
 
   return (
-    <ScrollView style={[style.header, { width: '100%' }]}>
+    <View style={[style.header, { width: '100%' }]}>
       <View
         style={[
           styles.flexRow,
@@ -58,6 +58,7 @@ const Home = () => {
         style={styles.mx2}
       />
 
+      {/* TODO: scroll not working */}
       <FlatList
         data={APPOINTMENTS}
         keyExtractor={item => item.id}
@@ -65,12 +66,12 @@ const Home = () => {
           <AppointmentList
             data={item}
             style={styles.mx2}
-            onPress={() => navigation.navigate('Appointment')}
+            onPress={() => navigation.navigate('AppointmentDisplay')}
           />
         )}
         showsVerticalScrollIndicator={false}
       />
-    </ScrollView>
+    </View>
   );
 };
 

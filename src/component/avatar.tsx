@@ -5,7 +5,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import styles from '../style';
 import theme from '../style/theme';
 
-// TODO join style from prop
 type Props = {
   urlImage: string;
 };

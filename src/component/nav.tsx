@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/core';
 type Props = {
   title: string;
   action?: ReactNode;
-  style: object;
+  style?: object;
 };
 
 const Nav = ({ title, action, style }: Props) => {

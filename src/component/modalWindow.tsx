@@ -30,6 +30,7 @@ const ModalWindow = ({ children, closeModal, ...rest }: Props) => {
   );
 };
 
+// TODO: offset from top
 const style = StyleSheet.create({
   separator: {
     width: 39,
