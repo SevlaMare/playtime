@@ -75,14 +75,14 @@ const Appointment = () => {
               styles.alignItemsCenter,
             ]}
           >
-            {true ? (
+            {guild.icon ? (
               <GuildIcon />
             ) : (
               <View style={[style.box, styles.rounded1]} />
             )}
 
             <Text style={[styles.h6, { color: theme.color }]}>
-              Select a server
+              {guild.name ? guild.name : 'Select a server'}
             </Text>
 
             <Feather name='chevron-right' size={20} color={theme.icon.std} />
