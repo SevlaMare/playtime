@@ -14,6 +14,8 @@ import styles from '../style';
 import theme from '../style/theme';
 import { Feather } from '@expo/vector-icons';
 
+import ModalGuild from '../screen/modalGuild';
+
 import TitleBar from '../component/titleBar';
 import Nav from '../component/nav';
 import CategorySelect from '../component/categorySelect';
@@ -21,13 +23,20 @@ import GuildIcon from '../component/guildIcon';
 import Input from '../component/input';
 import TextArea from '../component/textArea';
 import Button from '../component/button';
+import ModalWindow from '../component/modalWindow';
 
 const Appointment = () => {
   const [category, setCategory] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleToggleCategory = (categoryId: string) => {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   };
+
+  // const handleGuildSelect = (guildSelect: GuildProps) => {
+  //   setGuild(guildSelect);
+  //   setOpenGuildsModal(false);
+  // }
 
   return (
     <KeyboardAvoidingView
@@ -56,6 +65,7 @@ const Appointment = () => {
           ]}
         >
           <RectButton
+            onPress={() => setShowModal(true)}
             style={[
               styles.flexRow,
               styles.justifyContentBetween,
@@ -128,6 +138,10 @@ const Appointment = () => {
           <Button label={'Schedule'} height={56} />
         </View>
       </ScrollView>
+
+      <ModalWindow visible={showModal}>
+        <ModalGuild />
+      </ModalWindow>
     </KeyboardAvoidingView>
   );
 };

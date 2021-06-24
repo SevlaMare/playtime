@@ -9,7 +9,7 @@ import { Player, Calendar } from '../assets/icon';
 import GuildIcon from './guildIcon';
 import { CATEGORIES } from '../helpers/mock_data';
 
-type GuildProps = {
+export type GuildProps = {
   id: string;
   name: string;
   icon: null;

@@ -8,6 +8,7 @@ import Home from './screen/home';
 import SignIn from './screen/signin';
 import AppointmentCreate from './screen/appointmentCreate';
 import AppointmentDisplay from './screen/appointmentDisplay';
+import ModalGuild from './screen/modalGuild';
 
 import theme from './style/theme';
 
@@ -23,6 +24,7 @@ const Router = () => {
         }}
       >
         <Screen name='AppointmentCreate' component={AppointmentCreate} />
+        <Screen name='ModalGuild' component={ModalGuild} />
         <Screen name='SignIn' component={SignIn} />
         <Screen name='Home' component={Home} />
         <Screen name='AppointmentDisplay' component={AppointmentDisplay} />

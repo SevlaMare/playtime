@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image } from 'react-native';
 import styles from '../style';
 import theme from '../style/theme';
 
@@ -15,17 +15,12 @@ const GuildIcon = () => {
         { borderColor: theme.separator.fade },
       ]}
     >
-      <Image source={{ uri }} style={[style.image, styles.rounded1]} />
+      <Image
+        source={{ uri }}
+        style={[styles.rounded1, styles.imgCover, { width: 64, height: 64 }]}
+      />
     </View>
   );
 };
-
-const style = StyleSheet.create({
-  image: {
-    width: 64,
-    height: 64,
-    resizeMode: 'cover',
-  },
-});
 
 export default GuildIcon;
