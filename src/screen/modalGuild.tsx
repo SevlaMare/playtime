@@ -8,17 +8,17 @@ import GuildContent from '../component/guildContent';
 import { GUILDS } from '../helpers/mock_data';
 
 type Props = {
-  handleGuildSelect: (guild: GuildProps) => void;
+  handleSelect: (guild: GuildProps) => void;
 };
 
-const GuildModal = ({ handleGuildSelect }: Props) => {
+const GuildModal = ({ handleSelect }: Props) => {
   return (
     <View style={[styles.container]}>
       <FlatList
         data={GUILDS}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <GuildContent data={item} onPress={() => handleGuildSelect(item)} />
+          <GuildContent data={item} onPress={() => handleSelect(item)} />
         )}
         showsVerticalScrollIndicator={false}
       />

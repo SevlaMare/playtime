@@ -8,7 +8,6 @@ import {
   Platform,
 } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
-// import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -24,19 +23,23 @@ import Input from '../component/input';
 import TextArea from '../component/textArea';
 import Button from '../component/button';
 import ModalWindow from '../component/modalWindow';
+import { GuildProps } from '../component/appointmentList';
 
 const Appointment = () => {
   const [category, setCategory] = useState('');
   const [showModal, setShowModal] = useState(false);
 
+  // <type> ... (start with empty obj {} of <type>)
+  const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+
   const handleToggleCategory = (categoryId: string) => {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   };
 
-  // const handleGuildSelect = (guildSelect: GuildProps) => {
-  //   setGuild(guildSelect);
-  //   setOpenGuildsModal(false);
-  // }
+  const handleGuildSelect = (guildSelect: GuildProps) => {
+    setGuild(guildSelect);
+    setShowModal(false);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -140,7 +143,7 @@ const Appointment = () => {
       </ScrollView>
 
       <ModalWindow visible={showModal}>
-        <ModalGuild />
+        <ModalGuild handleSelect={handleGuildSelect} />
       </ModalWindow>
     </KeyboardAvoidingView>
   );
