@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text, Image, Alert, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Alert,
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import { useAuth } from '../provider/auth';
 
 import styles from '../style';
@@ -10,7 +18,7 @@ import { discord } from '../assets/icon';
 import ButtonIcon from '../component/buttonIcon';
 
 const SignIn = () => {
-  const { user, signIn } = useAuth();
+  const { load, signIn } = useAuth();
 
   const handleSignIn = async () => {
     try {
@@ -59,11 +67,15 @@ const SignIn = () => {
             Create groups to play your favorites games with your friends
           </Text>
 
-          <ButtonIcon
-            icon={discord}
-            label={'Login with Discord'}
-            onPress={handleSignIn}
-          />
+          {load ? (
+            <ActivityIndicator color={theme.text.alert.color} />
+          ) : (
+            <ButtonIcon
+              icon={discord}
+              label={'Login with Discord'}
+              onPress={handleSignIn}
+            />
+          )}
         </View>
       </View>
     </ScrollView>

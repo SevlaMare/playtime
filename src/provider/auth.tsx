@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import * as AuthSession from 'expo-auth-session';
+import Http from '../services/http';
 
 // import { useNavigation } from '@react-navigation/native';
 // const navigation = useNavigation();
@@ -32,6 +33,7 @@ type AuthResponse = AuthSession.AuthSessionResult & {
 
 type AuthContextData = {
   user: User;
+  load: boolean;
   signIn: () => Promise<void>;
 };
 
@@ -50,18 +52,25 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoad(true);
       const authUrl = `${BASE_URL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${SCOPE}`;
 
-      const { type, params } = await AuthSession.startAsync({
+      const { type, params } = (await AuthSession.startAsync({
         authUrl,
-      } as AuthResponse);
+      })) as AuthResponse;
 
-      console.log('>>> try sign', response);
+      if (type === 'success') {
+        // send on header> params.code
+        const userInfo = await Http('/users/@me');
+        console.log('ok >>>>>>>>>>', userInfo);
+      }
+      // console.log('>>> try sign', params);
     } catch {
       throw new Error('Auth fail');
+    } finally {
+      setLoad(false);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, signIn }}>
+    <AuthContext.Provider value={{ user, signIn, load }}>
       {children}
     </AuthContext.Provider>
   );
