@@ -3,6 +3,7 @@ import { StatusBar, LogBox } from 'react-native';
 // import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 // {  marginTop: getStatusBarHeight() }
 
+// dev mode only
 LogBox.ignoreLogs([
   'You are not currently signed in to Expo on your development machine.',
 ]);

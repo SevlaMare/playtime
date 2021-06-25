@@ -47,21 +47,36 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User>(USER);
   const [load, setLoad] = useState(false);
 
+  // dev mode using tunnel
   const signIn = async () => {
     try {
       setLoad(true);
-      const authUrl = `${BASE_URL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${SCOPE}`;
 
+      const authUrl = `${BASE_URL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+
+      // login request
       const { type, params } = (await AuthSession.startAsync({
         authUrl,
       })) as AuthResponse;
 
       if (type === 'success') {
-        // send on header> params.code
-        const userInfo = await Http('/users/@me');
-        console.log('ok >>>>>>>>>>', userInfo);
+        // set token on headers
+        Http.defaults.headers.authorization = `Bearer ${params.access_token}`;
+
+        // fetch user information
+        const userInfo = await Http.get('/users/@me');
+
+        // PARSE user data
+        const firstName = userInfo.data.username.split(' ')[0];
+        userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`;
+
+        // send user data to provider
+        setUser({
+          ...userInfo.data,
+          firstName,
+          token: params.access_token,
+        });
       }
-      // console.log('>>> try sign', params);
     } catch {
       throw new Error('Auth fail');
     } finally {
