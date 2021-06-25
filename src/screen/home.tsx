@@ -12,10 +12,12 @@ import TitleBar from '../component/titleBar';
 import AppointmentList from '../component/appointmentList';
 
 import { APPOINTMENTS } from '../helpers/mock_data';
+import { useAuth } from '../provider/auth';
 
 const Home = () => {
   const navigation = useNavigation();
   const [category, setCategory] = useState('');
+  const { user } = useAuth();
 
   const handleToggleCategory = (categoryId: string) => {
     categoryId === category ? setCategory('') : setCategory(categoryId);
@@ -31,12 +33,14 @@ const Home = () => {
           styles.mb2,
         ]}
       >
-        <Avatar urlImage={'http://github.com/SevlaMare.png'} />
+        <Avatar urlImage={user.avatar} />
 
         <View style={styles.flexGrow}>
           <View style={styles.flexRow}>
             <Text style={[styles.h2, { color: theme.color }]}>Hi, </Text>
-            <Text style={[styles.h3, { color: theme.color }]}>Thiago</Text>
+            <Text style={[styles.h3, { color: theme.color }]}>
+              {user.firstName}
+            </Text>
           </View>
 
           <Text style={[styles.h4, { color: theme.color }]}>

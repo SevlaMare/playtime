@@ -16,8 +16,6 @@ import theme from './style/theme';
 const Router = () => {
   const { user } = useAuth();
 
-  console.log('>>>>>>>', user.id);
-
   return (
     <NavigationContainer>
       {user.id > 1 ? (
