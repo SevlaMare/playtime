@@ -32,13 +32,13 @@ const Appointment = () => {
   // <type> ... (start with empty obj {} of <type>)
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
 
-  const handleToggleCategory = (categoryId: string) => {
-    categoryId === category ? setCategory('') : setCategory(categoryId);
-  };
-
   const handleGuildSelect = (guildSelect: GuildProps) => {
     setGuild(guildSelect);
     setShowModal(false);
+  };
+
+  const handleToggleCategory = (categoryId: string) => {
+    setCategory(categoryId);
   };
 
   return (
