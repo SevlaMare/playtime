@@ -1,13 +1,22 @@
 import { ranked, duel, fun, training } from '../assets/icon';
 
-export const CATEGORIES = [
+const USER = {
+  id: '1',
+  username: 'Sevla',
+  firstName: 'Thiago',
+  avatar: 'avatar.png',
+  email: 'email@email.com',
+  token: '12348JDIOJ#MIO',
+};
+
+const CATEGORIES = [
   { id: '1', title: 'Ranked', icon: ranked },
   { id: '2', title: 'Duel 1v1', icon: duel },
   { id: '3', title: 'Fun', icon: fun },
   { id: '4', title: 'Pratice', icon: training },
 ];
 
-export const APPOINTMENTS = [
+const APPOINTMENTS = [
   {
     id: '1',
     guild: {
@@ -34,7 +43,7 @@ export const APPOINTMENTS = [
   },
 ];
 
-export const PLAYERS = [
+const PLAYERS = [
   {
     id: '1',
     username: 'Sevla',
@@ -49,7 +58,7 @@ export const PLAYERS = [
   },
 ];
 
-export const GUILDS = [
+const GUILDS = [
   {
     id: '1',
     name: 'Legends',
@@ -63,3 +72,5 @@ export const GUILDS = [
     owner: false,
   },
 ];
+
+export { USER, CATEGORIES, APPOINTMENTS, PLAYERS, GUILDS };

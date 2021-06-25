@@ -13,14 +13,6 @@
 - Expo
 - Eslint and Prettier
 
-### Guide lines
-
-- Keep layout spacing on top levels
-- Prefer a set of numbers for spacing, avoid random numbers
-- Data flow using prop drilling when sending data from a screen to it child
-  components
-- Between screens use context instead of drill down
-
 ### Acknowledgments
 
 Design idea by @Tiagoluchtenberg
