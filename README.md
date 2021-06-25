@@ -17,7 +17,9 @@
 
 - Keep layout spacing on top levels
 - Prefer a set of numbers for spacing, avoid random numbers
-- Data flow from top level to nested components, no duplicates
+- Data flow using prop drilling when sending data from a screen to it child
+  components
+- Between screens use context instead of drill down
 
 ### Acknowledgments
 

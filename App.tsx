@@ -6,6 +6,8 @@ import { StatusBar } from 'react-native';
 import Router from './src/Router';
 import Container from './src/component/container';
 
+import { AuthProvider } from './src/provider/auth';
+
 import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 import {
   Rajdhani_500Medium,
@@ -33,7 +35,9 @@ const App = () => {
         backgroundColor='transparent'
         translucent
       />
-      <Router />
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
     </Container>
   );
 };
