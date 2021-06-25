@@ -27,7 +27,8 @@ type User = {
 
 type AuthResponse = AuthSession.AuthSessionResult & {
   params: {
-    access_token: string;
+    access_token?: string;
+    error?: string;
   };
 };
 
@@ -59,7 +60,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         authUrl,
       })) as AuthResponse;
 
-      if (type === 'success') {
+      if (type === 'success' && !params.error) {
         // set token on headers
         Http.defaults.headers.authorization = `Bearer ${params.access_token}`;
 
