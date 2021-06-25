@@ -1,7 +1,11 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, LogBox } from 'react-native';
 // import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 // {  marginTop: getStatusBarHeight() }
+
+LogBox.ignoreLogs([
+  'You are not currently signed in to Expo on your development machine.',
+]);
 
 import Router from './src/Router';
 import Container from './src/component/container';

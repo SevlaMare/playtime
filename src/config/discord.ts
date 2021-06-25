@@ -1,5 +1,5 @@
 const BASE_URL = 'https://discord.com/api';
-const REDIRECT_URI = 'https%3A%2F%2Fauth.expo.io%2Fgameplay';
+const REDIRECT_URI = 'https://auth.expo.io/@sevla00/playtime';
 const SCOPE = 'identify%20connections%20email%20guilds';
 const RESPONSE_TYPE = 'token';
 const CLIENT_ID = '857804257528381471';

@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, Image, Alert, StyleSheet, ScrollView } from 'react-native';
 import { useAuth } from '../provider/auth';
 
 import styles from '../style';
@@ -11,13 +10,14 @@ import { discord } from '../assets/icon';
 import ButtonIcon from '../component/buttonIcon';
 
 const SignIn = () => {
-  const navigation = useNavigation();
+  const { user, signIn } = useAuth();
 
-  const { user } = useAuth();
-  console.log('>>>>>>>>>>', user);
-
-  const handleSignIn = () => {
-    navigation.navigate('Home');
+  const handleSignIn = async () => {
+    try {
+      await signIn();
+    } catch (error) {
+      Alert.alert(error);
+    }
   };
 
   return (

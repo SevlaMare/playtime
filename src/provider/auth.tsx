@@ -1,5 +1,19 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import * as AuthSession from 'expo-auth-session';
+
+// import { useNavigation } from '@react-navigation/native';
+// const navigation = useNavigation();
+// navigation.navigate('Home');
+
 import { USER } from '../helpers/mock_data';
+import {
+  BASE_URL,
+  REDIRECT_URI,
+  SCOPE,
+  RESPONSE_TYPE,
+  CLIENT_ID,
+  CDN_IMAGE,
+} from '../config/discord';
 
 type User = {
   id: string;
@@ -10,8 +24,15 @@ type User = {
   token: string;
 };
 
+type AuthResponse = AuthSession.AuthSessionResult & {
+  params: {
+    access_token: string;
+  };
+};
+
 type AuthContextData = {
   user: User;
+  signIn: () => Promise<void>;
 };
 
 type AuthProviderProps = {
@@ -20,23 +41,29 @@ type AuthProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextData);
 
-// appid 857804257528381471
-// public key d3abd634c2437a35ecf7aa15c36ee2a83434be0cc57bc60317d482b46646846b
-
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User>(USER);
   const [load, setLoad] = useState(false);
 
-  const SignIn = () => {
+  const signIn = async () => {
     try {
       setLoad(true);
+      const authUrl = `${BASE_URL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${SCOPE}`;
 
-      // AuthSession.startAsync({authUrl})
-    } catch (error) {}
+      const { type, params } = await AuthSession.startAsync({
+        authUrl,
+      } as AuthResponse);
+
+      console.log('>>> try sign', response);
+    } catch {
+      throw new Error('Auth fail');
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, signIn }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

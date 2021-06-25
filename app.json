@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon/icon.png",
+    "scheme": "playtime",
     "splash": {
       "image": "./src/assets/image/splash.png",
       "resizeMode": "contain",

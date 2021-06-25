@@ -1,3 +1,8 @@
+// ---------------------------------------------------------------
+// get:   Http('/guild/3')
+// post:  Http('/appointment', { name: 'asd', date: 123 }, 'POST')
+// ---------------------------------------------------------------
+
 import { BASE_URL } from '../config/discord';
 
 type Params = {
@@ -6,7 +11,7 @@ type Params = {
   data: object | null;
 };
 
-const Http = ({ URL, method, data }: Params) => {
+const Http = ({ URL, data, method = 'GET' }: Params) => {
   const FULL_URL = BASE_URL + URL;
 
   return fetch(FULL_URL, {

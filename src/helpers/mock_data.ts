@@ -1,3 +1,7 @@
+// ------------------------------------
+// MOCK DATA FOR DEVELOPMENT AND TESTS
+// ------------------------------------
+
 import { ranked, duel, fun, training } from '../assets/icon';
 
 const USER = {
