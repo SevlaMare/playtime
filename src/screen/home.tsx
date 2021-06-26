@@ -96,7 +96,7 @@ const Home = () => {
         <>
           <TitleBar
             title={'Scheduled matches'}
-            subtitle={'Total 6'}
+            subtitle={`Total ${appointments.length}`}
             style={styles.mx2}
           />
 
