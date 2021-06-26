@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Alert } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useAuth } from '../provider/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RectButton } from 'react-native-gesture-handler';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -19,7 +20,7 @@ import Loader from '../component/loader';
 import { COLLECTION_APPOINTMENTS } from '../config/store';
 
 const Home = () => {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const navigation = useNavigation();
 
   const [load, setLoad] = useState(true);
@@ -58,6 +59,13 @@ const Home = () => {
     }, [category])
   );
 
+  const handleSignOut = () => {
+    Alert.alert('Logout', 'Wanna logout?', [
+      { text: 'No', style: 'cancel' },
+      { text: 'yes', onPress: () => signOut() },
+    ]);
+  };
+
   return (
     <View style={[style.header, { width: '100%' }]}>
       <View
@@ -68,7 +76,9 @@ const Home = () => {
           styles.mb2,
         ]}
       >
-        <Avatar urlImage={user.avatar} />
+        <RectButton onPress={handleSignOut}>
+          <Avatar urlImage={user.avatar} />
+        </RectButton>
 
         <View style={styles.flexGrow}>
           <View style={styles.flexRow}>

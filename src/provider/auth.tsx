@@ -18,6 +18,7 @@ import {
   CDN_IMAGE,
 } from '../config/discord';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { COLLECTION_USERS } from '../config/store';
 
 type User = {
   id: string;
@@ -39,6 +40,7 @@ type AuthContextData = {
   user: User;
   load: boolean;
   signIn: () => Promise<void>;
+  signOut: () => Promise<void>;
 };
 
 type AuthProviderProps = {
@@ -93,6 +95,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  const signOut = async () => {
+    setUser({} as User);
+    await AsyncStorage.removeItem('CURRENT_USER');
+  };
+
   // load user data from cache
   const userFromCache = async () => {
     const stored_data = await AsyncStorage.getItem('CURRENT_USER');
@@ -111,7 +118,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signIn, load }}>
+    <AuthContext.Provider value={{ user, signIn, signOut, load }}>
       {children}
     </AuthContext.Provider>
   );

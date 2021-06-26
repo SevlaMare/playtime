@@ -129,6 +129,7 @@ const Appointment = () => {
         </>
       )}
 
+      {/* TODO test with discord installed */}
       {guildSelected.guild.owner && (
         <View style={[style.buttom, styles.mx2, styles.pb2]}>
           <ButtonIcon
