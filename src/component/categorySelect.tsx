@@ -10,7 +10,11 @@ type Props = {
   setCategory: (categoryId: string) => void;
 };
 
-const CategorySelect = ({ categorySelected, setCategory, checkbox }: Props) => {
+const CategorySelect = ({
+  categorySelected,
+  setCategory,
+  checkbox = false,
+}: Props) => {
   return (
     <ScrollView
       style={[styles.ml2]}

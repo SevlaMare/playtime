@@ -40,7 +40,7 @@ const Home = () => {
     const storage: AppointmentProps[] = data ? JSON.parse(data) : [];
 
     // filter will slice appointments on the list
-    if (category == null) {
+    if (category) {
       setAppointments(storage.filter(item => item.category === category));
     } else {
       setAppointments(storage);
