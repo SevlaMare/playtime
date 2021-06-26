@@ -6,6 +6,8 @@ import {
   FlatList,
   ImageBackground,
   Alert,
+  Share,
+  Platform,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { BorderlessButton } from 'react-native-gesture-handler';
@@ -59,6 +61,15 @@ const Appointment = () => {
     }
   };
 
+  const handleShare = () => {
+    const message =
+      Platform.OS === 'ios'
+        ? `Join us at ${guildSelected.guild.name}`
+        : `Join our party!`;
+
+    Share.share({ message, url: widget.instant_invite });
+  };
+
   useEffect(() => {
     fetchGuidWidget();
   }, []);
@@ -67,10 +78,13 @@ const Appointment = () => {
     <View style={{ flex: 1 }}>
       <Nav
         title={'Appointment'}
+        // only owner can share without discord bot
         action={
-          <BorderlessButton>
-            <Fontisto name='share' size={24} color={theme.icon.disallow} />
-          </BorderlessButton>
+          guildSelected.guild.owner && (
+            <BorderlessButton onPress={handleShare}>
+              <Fontisto name='share' size={24} color={theme.icon.disallow} />
+            </BorderlessButton>
+          )
         }
       />
 
@@ -88,7 +102,7 @@ const Appointment = () => {
           {guildSelected.guild.name}
         </Text>
         <Text style={[styles.t3, { color: theme.color }]}>
-          {guildSelected ? guildSelected.description : 'Tody is winning day'}
+          {guildSelected ? guildSelected.description : 'Today is winning day'}
         </Text>
       </ImageBackground>
 
@@ -111,7 +125,7 @@ const Appointment = () => {
       )}
 
       <View style={[style.buttom, styles.mx2, styles.pb2]}>
-        <ButtonIcon icon={discord} label={'Login with Discord'} />
+        <ButtonIcon icon={discord} label={'Join match'} />
       </View>
     </View>
   );
