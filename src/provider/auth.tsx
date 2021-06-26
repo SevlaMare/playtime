@@ -1,13 +1,14 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 import * as AuthSession from 'expo-auth-session';
 import Http from '../services/http';
-import Storage from '../services/store';
+// import Storage from '../services/store';
 
-// import { useNavigation } from '@react-navigation/native';
-// const navigation = useNavigation();
-// navigation.navigate('Home');
-
-import { USER } from '../helpers/mock_data';
 import {
   BASE_URL,
   REDIRECT_URI,
@@ -16,6 +17,7 @@ import {
   CLIENT_ID,
   CDN_IMAGE,
 } from '../config/discord';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type User = {
   id: string;
@@ -46,10 +48,9 @@ type AuthProviderProps = {
 export const AuthContext = createContext({} as AuthContextData);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User>(USER);
+  const [user, setUser] = useState<User>({} as User);
   const [load, setLoad] = useState(false);
 
-  // dev mode using tunnel
   const signIn = async () => {
     try {
       setLoad(true);
@@ -72,13 +73,18 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         const firstName = userInfo.data.username.split(' ')[0];
         userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`;
 
-        // Storage.set('current_user', '');
         // send user data to provider
-        setUser({
+        const userData = {
           ...userInfo.data,
           firstName,
           token: params.access_token,
-        });
+        };
+
+        // persist user data on cache
+        await AsyncStorage.setItem('CURRENT_USER', JSON.stringify(userData));
+
+        // send user data to provider
+        setUser(userData);
       }
     } catch {
       throw new Error('Auth fail');
@@ -86,6 +92,23 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoad(false);
     }
   };
+
+  // load user data from cache
+  const userFromCache = async () => {
+    const stored_data = await AsyncStorage.getItem('CURRENT_USER');
+
+    if (stored_data) {
+      const current_user = JSON.parse(stored_data) as User;
+
+      Http.defaults.headers.authorization = `Bearer ${current_user.token}`;
+
+      setUser(current_user);
+    }
+  };
+
+  useEffect(() => {
+    userFromCache();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, signIn, load }}>

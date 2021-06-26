@@ -5,6 +5,7 @@ type Params = {
   value: string | object;
 };
 
+// TODO let async be handle outside
 class Storage {
   static async get({ key }: Params) {
     const data = await AsyncStorage.getItem(key);
