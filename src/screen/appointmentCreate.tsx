@@ -28,8 +28,6 @@ import { GuildProps } from '../component/appointmentList';
 const Appointment = () => {
   const [category, setCategory] = useState('');
   const [showModal, setShowModal] = useState(false);
-
-  // <type> ... (start with empty obj {} of <type>)
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
 
   const handleGuildSelect = (guildSelect: GuildProps) => {
@@ -76,7 +74,7 @@ const Appointment = () => {
             ]}
           >
             {guild.icon ? (
-              <GuildIcon />
+              <GuildIcon iconId={guild.icon} groupId={guild.id} />
             ) : (
               <View style={[style.box, styles.rounded1]} />
             )}
