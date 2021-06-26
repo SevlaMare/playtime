@@ -12,6 +12,7 @@ import {
 import { useRoute } from '@react-navigation/native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import * as Linking from 'expo-linking';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -70,6 +71,10 @@ const Appointment = () => {
     Share.share({ message, url: widget.instant_invite });
   };
 
+  const handleRedirect = () => {
+    Linking.openURL(widget.instant_invite);
+  };
+
   useEffect(() => {
     fetchGuidWidget();
   }, []);
@@ -124,9 +129,15 @@ const Appointment = () => {
         </>
       )}
 
-      <View style={[style.buttom, styles.mx2, styles.pb2]}>
-        <ButtonIcon icon={discord} label={'Join match'} />
-      </View>
+      {guildSelected.guild.owner && (
+        <View style={[style.buttom, styles.mx2, styles.pb2]}>
+          <ButtonIcon
+            icon={discord}
+            label={'Join match'}
+            onPress={handleRedirect}
+          />
+        </View>
+      )}
     </View>
   );
 };
