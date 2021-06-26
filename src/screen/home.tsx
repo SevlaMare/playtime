@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useAuth } from '../provider/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -41,6 +41,14 @@ const Home = () => {
 
     setLoad(false);
   };
+
+  // trigger when back to this screen (since is never unmonted)
+  useFocusEffect(
+    // avoid reload appointments when filter category selection
+    useCallback(() => {
+      loadAppointments();
+    }, [category])
+  );
 
   return (
     <View style={[style.header, { width: '100%' }]}>
