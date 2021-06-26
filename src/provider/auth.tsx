@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import * as AuthSession from 'expo-auth-session';
 import Http from '../services/http';
+import Storage from '../services/store';
 
 // import { useNavigation } from '@react-navigation/native';
 // const navigation = useNavigation();
@@ -71,6 +72,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         const firstName = userInfo.data.username.split(' ')[0];
         userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`;
 
+        // Storage.set('current_user', '');
         // send user data to provider
         setUser({
           ...userInfo.data,
