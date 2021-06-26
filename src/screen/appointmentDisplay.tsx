@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { BorderlessButton } from 'react-native-gesture-handler';
@@ -18,23 +19,51 @@ import { discord } from '../assets/icon';
 
 import TitleBar from '../component/titleBar';
 import Nav from '../component/nav';
-import Player from '../component/player';
+import Player, { MemberProps } from '../component/player';
 import ButtonIcon from '../component/buttonIcon';
 
 import { PLAYERS } from '../helpers/mock_data';
 import { AppointmentProps } from '../component/appointmentList';
+import Http from '../services/http';
+import Loader from '../component/loader';
 
 type Params = {
   guildSelected: AppointmentProps;
 };
 
+type GuilldWidget = {
+  id: string;
+  name: string;
+  instant_invite: string;
+  members: MemberProps[];
+  presence_count: number;
+};
+
 const Appointment = () => {
   const route = useRoute();
+  const [load, setLoad] = useState(true);
+  const [widget, setWidget] = useState<GuilldWidget>();
   // param comes from router provider
   const { guildSelected } = route.params as Params;
 
-  // const name = async (params:type) => {
-  // }
+  const fetchGuidWidget = async () => {
+    // server need to be enable to server widget
+    try {
+      const response = await Http.get(
+        `/guilds/${guildSelected.guild.id}/widget.json`
+      );
+      setWidget(response.data);
+      setLoad(false);
+    } catch (err) {
+      Alert.alert('Ask admin to turn on widgets in the server.');
+    } finally {
+      setLoad(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchGuidWidget();
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -65,14 +94,20 @@ const Appointment = () => {
         </Text>
       </ImageBackground>
 
-      <TitleBar title={'Players'} subtitle={'Total 6'} />
+      {load ? (
+        <Loader />
+      ) : (
+        <>
+          <TitleBar title={'Players'} subtitle={'Total 6'} />
 
-      <FlatList
-        data={PLAYERS}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => <Player data={item} />}
-        style={styles.mx2}
-      />
+          <FlatList
+            data={widget.members}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Player data={item} />}
+            style={styles.mx2}
+          />
+        </>
+      )}
 
       <View style={[style.buttom, styles.mx2, styles.pb2]}>
         <ButtonIcon
