@@ -14,7 +14,7 @@ import GuildIcon from './guildIcon';
 export type GuildProps = {
   id: string;
   name: string;
-  icon: string | null;
+  icon: string;
   owner: boolean;
 };
 
