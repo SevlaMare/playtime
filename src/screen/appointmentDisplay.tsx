@@ -6,6 +6,7 @@ import {
   FlatList,
   ImageBackground,
 } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
@@ -21,8 +22,20 @@ import Player from '../component/player';
 import ButtonIcon from '../component/buttonIcon';
 
 import { PLAYERS } from '../helpers/mock_data';
+import { AppointmentProps } from '../component/appointmentList';
+
+type Params = {
+  guildSelected: AppointmentProps;
+};
 
 const Appointment = () => {
+  const route = useRoute();
+  // param comes from router provider
+  const { guildSelected } = route.params as Params;
+
+  // const name = async (params:type) => {
+  // }
+
   return (
     <View style={{ flex: 1 }}>
       <Nav
@@ -44,9 +57,11 @@ const Appointment = () => {
           { height: 240 },
         ]}
       >
-        <Text style={[styles.h1, { color: theme.color }]}>Legend</Text>
+        <Text style={[styles.h1, { color: theme.color }]}>
+          {guildSelected.guild.name}
+        </Text>
         <Text style={[styles.t3, { color: theme.color }]}>
-          Tody is winning day
+          {guildSelected ? guildSelected.description : 'Tody is winning day'}
         </Text>
       </ImageBackground>
 

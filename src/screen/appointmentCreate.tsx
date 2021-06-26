@@ -40,7 +40,7 @@ const Appointment = () => {
   const [month, setMonth] = useState('');
   const [hour, setHour] = useState('');
   const [min, setMin] = useState('00');
-  const [info, setInfo] = useState('');
+  const [description, setDescription] = useState('');
 
   const navigation = useNavigation();
 
@@ -59,7 +59,7 @@ const Appointment = () => {
       guild,
       category,
       date: `${month}/${day} às ${hour}:${min}h`,
-      info,
+      description,
     };
 
     // retrieve previous appointments
@@ -171,8 +171,8 @@ const Appointment = () => {
             maxLength={100}
             numberOfLines={5}
             autoCorrect={false}
-            value={info}
-            onChangeText={setInfo}
+            value={description}
+            onChangeText={setDescription}
           />
         </View>
 

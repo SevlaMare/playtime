@@ -31,6 +31,7 @@ const Home = () => {
   };
 
   const handleAppointmentDetails = (guildSelected: AppointmentProps) => {
+    // send param by router provider
     navigation.navigate('AppointmentDisplay', { guildSelected });
   };
 
