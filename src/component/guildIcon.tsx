@@ -6,8 +6,8 @@ import theme from '../style/theme';
 import { CDN_IMAGE } from '../config/discord';
 
 type Props = {
-  groupId?: string;
-  iconId?: string;
+  groupId: string;
+  iconId: string | null;
 };
 
 const GuildIcon = ({ groupId, iconId }: Props) => {

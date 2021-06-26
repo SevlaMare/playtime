@@ -16,27 +16,34 @@ import AppointmentList, {
 } from '../component/appointmentList';
 import Loader from '../component/loader';
 
-const Home = () => {
-  const [category, setCategory] = useState('');
-  const [load, setLoad] = useState(true);
-  const [appointments, setAppointments] = useState<AppointmentProps[]>([]);
+import { COLLECTION_APPOINTMENTS } from '../config/store';
 
-  const navigation = useNavigation();
+const Home = () => {
   const { user } = useAuth();
+  const navigation = useNavigation();
+
+  const [load, setLoad] = useState(true);
+  const [category, setCategory] = useState('');
+  const [appointments, setAppointments] = useState<AppointmentProps[]>([]);
 
   const handleToggleCategory = (categoryId: string) => {
     categoryId === category ? setCategory('') : setCategory(categoryId);
   };
 
+  const handleAppointmentDetails = (guildSelected: AppointmentProps) => {
+    navigation.navigate('AppointmentDisplay', { guildSelected });
+  };
+
   const loadAppointments = async () => {
-    const data = await AsyncStorage.getItem('APPOINTMENTS');
+    // retrieve from storage or empty list
+    const data = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+    const storage: AppointmentProps[] = data ? JSON.parse(data) : [];
 
-    const appointments: AppointmentProps[] = data ? JSON.parse(data) : [];
-
-    if (category) {
-      setAppointments(appointments.filter(item => item.category === category));
+    // filter will slice appointments on the list
+    if (category == null) {
+      setAppointments(storage.filter(item => item.category === category));
     } else {
-      setAppointments(appointments);
+      setAppointments(storage);
     }
 
     setLoad(false);
@@ -101,7 +108,7 @@ const Home = () => {
               <AppointmentList
                 data={item}
                 style={styles.mx2}
-                onPress={() => navigation.navigate('AppointmentDisplay')}
+                onPress={() => handleAppointmentDetails(item)}
               />
             )}
             showsVerticalScrollIndicator={false}

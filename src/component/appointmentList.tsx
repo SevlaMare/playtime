@@ -35,7 +35,7 @@ const AppointmentList = ({ data, ...props }: Props) => {
   return (
     <RectButton {...props}>
       <View style={[styles.flexRow, styles.mb3, styles.alignItemsCenter]}>
-        <GuildIcon />
+        <GuildIcon groupId={data.guild.id} iconId={data.guild.icon} />
 
         <View style={[style.info, styles.flexGrow, styles.ml2]}>
           <View style={[styles.justifyContentBetween, styles.flexRow]}>

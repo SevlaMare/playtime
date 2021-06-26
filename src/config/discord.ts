@@ -1,3 +1,7 @@
+// ---------------------------------------------------
+// interface for environment variables for discord api
+// ---------------------------------------------------
+
 const BASE_URL = 'https://discord.com/api';
 
 const { REDIRECT_URI } = process.env;

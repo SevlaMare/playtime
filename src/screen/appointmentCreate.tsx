@@ -28,6 +28,8 @@ import { GuildProps } from '../component/appointmentList';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 
+import { COLLECTION_APPOINTMENTS } from '../config/store';
+
 const Appointment = () => {
   const [category, setCategory] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -61,16 +63,16 @@ const Appointment = () => {
     };
 
     // retrieve previous appointments
-    const data = await AsyncStorage.getItem('USER_APPOINTMENTS');
+    const data = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
     const appointments = data ? JSON.parse(data) : [];
 
     // merge with news
     await AsyncStorage.setItem(
-      'USER_APPOINTMENTS',
+      COLLECTION_APPOINTMENTS,
       JSON.stringify([...appointments, newAppointment])
     );
 
-    return navigation.navigate('Home');
+    navigation.navigate('Home');
   };
 
   return (
@@ -84,12 +86,15 @@ const Appointment = () => {
           action={<BorderlessButton />}
           style={styles.mb1}
         />
+
         <TitleBar title={'Category'} />
+
         <CategorySelect
           categorySelected={category}
           setCategory={handleToggleCategory}
           checkbox
         />
+
         <View
           style={[
             style.form,
