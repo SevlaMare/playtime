@@ -22,7 +22,6 @@ import Nav from '../component/nav';
 import Player, { MemberProps } from '../component/player';
 import ButtonIcon from '../component/buttonIcon';
 
-import { PLAYERS } from '../helpers/mock_data';
 import { AppointmentProps } from '../component/appointmentList';
 import Http from '../services/http';
 import Loader from '../component/loader';
@@ -36,7 +35,6 @@ type GuilldWidget = {
   name: string;
   instant_invite: string;
   members: MemberProps[];
-  presence_count: number;
 };
 
 const Appointment = () => {
@@ -98,7 +96,10 @@ const Appointment = () => {
         <Loader />
       ) : (
         <>
-          <TitleBar title={'Players'} subtitle={'Total 6'} />
+          <TitleBar
+            title={'Players'}
+            subtitle={`Total ${widget?.members.length}`}
+          />
 
           <FlatList
             data={widget.members}
@@ -110,11 +111,7 @@ const Appointment = () => {
       )}
 
       <View style={[style.buttom, styles.mx2, styles.pb2]}>
-        <ButtonIcon
-          icon={discord}
-          label={'Login with Discord'}
-          // onPress={null}
-        />
+        <ButtonIcon icon={discord} label={'Login with Discord'} />
       </View>
     </View>
   );
