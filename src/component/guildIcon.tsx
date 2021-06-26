@@ -3,9 +3,17 @@ import { View, Image } from 'react-native';
 import styles from '../style';
 import theme from '../style/theme';
 
-const GuildIcon = () => {
-  const uri =
-    'https://gamerssuffice.com/wp-content/uploads/2019/11/How-to-add-bots-to-discord-500x405.jpg';
+import { CDN_IMAGE } from '../config/discord';
+
+type Props = {
+  groupId?: string;
+  iconId?: string;
+};
+
+const GuildIcon = ({ groupId, iconId }: Props) => {
+  const uri = groupId
+    ? `${CDN_IMAGE}/icons/${groupId}/${iconId}.png`
+    : 'https://gamerssuffice.com/wp-content/uploads/2019/11/How-to-add-bots-to-discord-500x405.jpg';
 
   return (
     <View

@@ -30,7 +30,7 @@ const GuildContent = ({ data, ...rest }: Props) => {
       {...rest}
     >
       <View>
-        <GuildIcon />
+        <GuildIcon groupId={data.id} iconId={data.icon} />
       </View>
 
       <View
