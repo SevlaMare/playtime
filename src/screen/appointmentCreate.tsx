@@ -8,6 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+import uuid from 'react-native-uuid';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -24,11 +25,22 @@ import TextArea from '../component/textArea';
 import Button from '../component/button';
 import ModalWindow from '../component/modalWindow';
 import { GuildProps } from '../component/appointmentList';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/core';
 
 const Appointment = () => {
   const [category, setCategory] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+
+  // TODO: validation (not null, valid category), get curr date
+  const [day, setDay] = useState('01');
+  const [month, setMonth] = useState('');
+  const [hour, setHour] = useState('');
+  const [min, setMin] = useState('00');
+  const [info, setInfo] = useState('');
+
+  const navigation = useNavigation();
 
   const handleGuildSelect = (guildSelect: GuildProps) => {
     setGuild(guildSelect);
@@ -37,6 +49,28 @@ const Appointment = () => {
 
   const handleToggleCategory = (categoryId: string) => {
     setCategory(categoryId);
+  };
+
+  const handleSave = async () => {
+    const newAppointment = {
+      id: uuid.v4(),
+      guild,
+      category,
+      date: `${month}/${day} às ${hour}:${min}h`,
+      info,
+    };
+
+    // retrieve previous appointments
+    const data = await AsyncStorage.getItem('USER_APPOINTMENTS');
+    const appointments = data ? JSON.parse(data) : [];
+
+    // merge with news
+    await AsyncStorage.setItem(
+      'USER_APPOINTMENTS',
+      JSON.stringify([...appointments, newAppointment])
+    );
+
+    return navigation.navigate('Home');
   };
 
   return (
@@ -97,9 +131,9 @@ const Appointment = () => {
             </Text>
 
             <View style={[styles.flexRow, styles.alignItemsCenter, styles.mt1]}>
-              <Input maxLength={2} />
+              <Input maxLength={2} value={month} onChangeText={setMonth} />
               <Text style={[styles.t3, { color: theme.color }]}>/ </Text>
-              <Input maxLength={2} />
+              <Input maxLength={2} value={day} onChangeText={setDay} />
             </View>
           </View>
 
@@ -109,9 +143,9 @@ const Appointment = () => {
             </Text>
 
             <View style={[styles.flexRow, styles.alignItemsCenter, styles.mt1]}>
-              <Input maxLength={2} />
+              <Input maxLength={2} value={hour} onChangeText={setHour} />
               <Text style={[styles.t3, { color: theme.color }]}>/ </Text>
-              <Input maxLength={2} />
+              <Input maxLength={2} value={min} onChangeText={setMin} />
             </View>
           </View>
         </View>
@@ -132,11 +166,13 @@ const Appointment = () => {
             maxLength={100}
             numberOfLines={5}
             autoCorrect={false}
+            value={info}
+            onChangeText={setInfo}
           />
         </View>
 
         <View style={[styles.mx2, styles.my4]}>
-          <Button label={'Schedule'} height={56} />
+          <Button label={'Schedule'} height={56} onPress={handleSave} />
         </View>
       </ScrollView>
 
