@@ -16,7 +16,7 @@ export type GuildProps = {
   owner: boolean;
 };
 
-type AppointmentProps = {
+export type AppointmentProps = {
   id: string;
   guild: GuildProps;
   category: string;

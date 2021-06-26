@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '../provider/auth';
 
 import styles from '../style';
 import theme from '../style/theme';
@@ -9,14 +10,15 @@ import Avatar from '../component/avatar';
 import ButtonChar from '../component/buttonChar';
 import CategorySelect from '../component/categorySelect';
 import TitleBar from '../component/titleBar';
-import AppointmentList from '../component/appointmentList';
-
-import { APPOINTMENTS } from '../helpers/mock_data';
-import { useAuth } from '../provider/auth';
+import AppointmentList, {
+  AppointmentProps,
+} from '../component/appointmentList';
 
 const Home = () => {
-  const navigation = useNavigation();
   const [category, setCategory] = useState('');
+  const [appointments, setAppointments] = useState<AppointmentProps[]>([]);
+
+  const navigation = useNavigation();
   const { user } = useAuth();
 
   const handleToggleCategory = (categoryId: string) => {
@@ -64,7 +66,7 @@ const Home = () => {
 
       {/* TODO: scroll not working */}
       <FlatList
-        data={APPOINTMENTS}
+        data={appointments}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <AppointmentList
