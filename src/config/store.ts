@@ -4,7 +4,6 @@
 
 const DATABASE_NAME = 'PLAYTIME';
 
-// TODO replace CURRENT_USER by collection variable
 const COLLECTION_USERS = `${DATABASE_NAME}_user`;
 const COLLECTION_APPOINTMENTS = `${DATABASE_NAME}_appointments`;
 

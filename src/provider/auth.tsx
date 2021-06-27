@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import * as AuthSession from 'expo-auth-session';
 import Http from '../services/http';
-// import Storage from '../services/store';
 
 import {
   BASE_URL,
@@ -18,7 +17,7 @@ import {
   CDN_IMAGE,
 } from '../config/discord';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { COLLECTION_USERS } from '../config/store';
+import { COLLECTION_APPOINTMENTS, COLLECTION_USERS } from '../config/store';
 
 type User = {
   id: string;
@@ -83,7 +82,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         };
 
         // persist user data on cache
-        await AsyncStorage.setItem('CURRENT_USER', JSON.stringify(userData));
+        await AsyncStorage.setItem(COLLECTION_USERS, JSON.stringify(userData));
 
         // send user data to provider
         setUser(userData);
@@ -97,12 +96,13 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signOut = async () => {
     setUser({} as User);
-    await AsyncStorage.removeItem('CURRENT_USER');
+    await AsyncStorage.removeItem(COLLECTION_USERS);
+    await AsyncStorage.removeItem(COLLECTION_APPOINTMENTS);
   };
 
   // load user data from cache
   const userFromCache = async () => {
-    const stored_data = await AsyncStorage.getItem('CURRENT_USER');
+    const stored_data = await AsyncStorage.getItem(COLLECTION_USERS);
 
     if (stored_data) {
       const current_user = JSON.parse(stored_data) as User;
