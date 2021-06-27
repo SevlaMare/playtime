@@ -1,6 +1,6 @@
 ## Playtime
 
-> Keep the your games in sync with your friends
+> Keep your games in sync with your friends
 
 ![screenshot](./doc/screenshot.png)
 
@@ -14,5 +14,7 @@
 - Eslint and Prettier
 
 ### Acknowledgments
+
+A special Thanks to [@rodrigorgtic](https://github.com/rodrigorgtic)
 
 Design idea by @Tiagoluchtenberg
