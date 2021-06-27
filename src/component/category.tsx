@@ -9,7 +9,7 @@ import { SvgProps } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 
 type Props = RectButtonProps & {
-  title: string;
+  title?: string;
   icon: React.FC<SvgProps>;
   checked?: boolean;
   checkbox?: boolean;

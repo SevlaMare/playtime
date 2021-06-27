@@ -18,6 +18,8 @@ import {
 import { useFonts } from 'expo-font';
 import AppLoadling from 'expo-app-loading';
 
+// await AsyncStorage.clear();
+
 const App = () => {
   const [fontsLoaded] = useFonts({
     Inter_400Regular,

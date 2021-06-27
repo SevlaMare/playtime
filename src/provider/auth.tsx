@@ -17,7 +17,7 @@ import {
   CDN_IMAGE,
 } from '../config/discord';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { COLLECTION_APPOINTMENTS, COLLECTION_USERS } from '../config/store';
+import { COLLECTION_USERS } from '../config/store';
 
 type User = {
   id: string;
@@ -94,10 +94,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  // keep appointments even after logout
   const signOut = async () => {
     setUser({} as User);
     await AsyncStorage.removeItem(COLLECTION_USERS);
-    await AsyncStorage.removeItem(COLLECTION_APPOINTMENTS);
   };
 
   // load user data from cache

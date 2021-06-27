@@ -6,6 +6,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import uuid from 'react-native-uuid';
@@ -35,7 +36,6 @@ const Appointment = () => {
   const [showModal, setShowModal] = useState(false);
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
 
-  // TODO: validation (not null, valid category), get curr date
   const [day, setDay] = useState('01');
   const [month, setMonth] = useState('');
   const [hour, setHour] = useState('');
@@ -51,6 +51,16 @@ const Appointment = () => {
 
   const handleToggleCategory = (categoryId: string) => {
     setCategory(categoryId);
+  };
+
+  // TODO: more validations, get date time
+  const handleValidation = () => {
+    if (!category) {
+      Alert.alert('You need select a category');
+      return false;
+    }
+
+    return true;
   };
 
   const handleSave = async () => {
@@ -177,7 +187,14 @@ const Appointment = () => {
         </View>
 
         <View style={[styles.mx2, styles.my4]}>
-          <Button label={'Schedule'} height={56} onPress={handleSave} />
+          <Button
+            label={'Schedule'}
+            height={56}
+            // onPress={handleSave}
+            onPress={() => {
+              handleValidation() ? handleSave() : null;
+            }}
+          />
         </View>
       </ScrollView>
 
